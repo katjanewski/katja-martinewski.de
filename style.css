@@ -362,7 +362,7 @@ ul {
  */
 
 html {
-  font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; /* 1 */
+  font-family: Josefin Sans, Roboto; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -500,7 +500,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /**
@@ -11394,15 +11394,15 @@ video {
 }
 
 .font-sans {
-  font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Josefin Sans, Roboto;
 }
 
 .font-serif {
-  font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-mono {
-  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .font-thin {
@@ -11438,78 +11438,6 @@ video {
 }
 
 .font-black {
-  font-weight: 900;
-}
-
-.hover\:font-thin:hover {
-  font-weight: 100;
-}
-
-.hover\:font-extralight:hover {
-  font-weight: 200;
-}
-
-.hover\:font-light:hover {
-  font-weight: 300;
-}
-
-.hover\:font-normal:hover {
-  font-weight: 400;
-}
-
-.hover\:font-medium:hover {
-  font-weight: 500;
-}
-
-.hover\:font-semibold:hover {
-  font-weight: 600;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
-}
-
-.hover\:font-extrabold:hover {
-  font-weight: 800;
-}
-
-.hover\:font-black:hover {
-  font-weight: 900;
-}
-
-.focus\:font-thin:focus {
-  font-weight: 100;
-}
-
-.focus\:font-extralight:focus {
-  font-weight: 200;
-}
-
-.focus\:font-light:focus {
-  font-weight: 300;
-}
-
-.focus\:font-normal:focus {
-  font-weight: 400;
-}
-
-.focus\:font-medium:focus {
-  font-weight: 500;
-}
-
-.focus\:font-semibold:focus {
-  font-weight: 600;
-}
-
-.focus\:font-bold:focus {
-  font-weight: 700;
-}
-
-.focus\:font-extrabold:focus {
-  font-weight: 800;
-}
-
-.focus\:font-black:focus {
   font-weight: 900;
 }
 
@@ -29395,14 +29323,41 @@ video {
 }
 
 .glass {
+  --tw-bg-opacity: 0.5;
   backdrop-filter: blur( 10.0px );
   -webkit-backdrop-filter: blur( 10.0px );
 }
 
-.trapezoid {
-  transform: perspective(10px) rotateX(-1deg);
-  margin: 50px;
+/* High performance box-shadow animation using pseudo elements to prevent redrawing */
+
+.floating-action-button { transition: transform 0.1s ease-out; background-position: center; position: relative; --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); z-index: 10;
 }
+
+.floating-action-button:hover { transform: scale(1.1);
+}
+
+.floating-action-button:active { transform: scale(1);
+}
+
+.floating-action-button::before { content: ""; border-radius: inherit; transition: background .8s; background-position: center; height: 100%; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; z-index: 10;
+}
+
+.floating-action-button:hover::before { background: radial-gradient(circle, transparent 1%, text-gray-300 1%) center/15000%;
+}
+
+.floating-action-button:active::before { background-size: 100%; transition: background 0s; --tw-bg-opacity: 1; background-color: rgba(59, 130, 246, var(--tw-bg-opacity))
+}
+
+.floating-action-button::after { content: ""; border-radius: inherit; transition: opacity 0.1s ease-out; opacity: 0; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); z-index: 0;
+}
+
+.floating-action-button:hover::after { opacity: 1;
+}
+
+.floating-action-button:active::after { opacity: 0;
+}
+
+/* End - High performance box-shadow animation using pseudo elements to prevent redrawing */
 
 @media (min-width: 640px) {
   .sm\:container {
@@ -40263,15 +40218,15 @@ video {
   }
 
   .sm\:font-sans {
-    font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Josefin Sans, Roboto;
   }
 
   .sm\:font-serif {
-    font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .sm\:font-mono {
-    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .sm\:font-thin {
@@ -40307,78 +40262,6 @@ video {
   }
 
   .sm\:font-black {
-    font-weight: 900;
-  }
-
-  .sm\:hover\:font-thin:hover {
-    font-weight: 100;
-  }
-
-  .sm\:hover\:font-extralight:hover {
-    font-weight: 200;
-  }
-
-  .sm\:hover\:font-light:hover {
-    font-weight: 300;
-  }
-
-  .sm\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .sm\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .sm\:hover\:font-semibold:hover {
-    font-weight: 600;
-  }
-
-  .sm\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .sm\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .sm\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .sm\:focus\:font-thin:focus {
-    font-weight: 100;
-  }
-
-  .sm\:focus\:font-extralight:focus {
-    font-weight: 200;
-  }
-
-  .sm\:focus\:font-light:focus {
-    font-weight: 300;
-  }
-
-  .sm\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .sm\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .sm\:focus\:font-semibold:focus {
-    font-weight: 600;
-  }
-
-  .sm\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .sm\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .sm\:focus\:font-black:focus {
     font-weight: 900;
   }
 
@@ -69079,15 +68962,15 @@ video {
   }
 
   .md\:font-sans {
-    font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Josefin Sans, Roboto;
   }
 
   .md\:font-serif {
-    font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .md\:font-mono {
-    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .md\:font-thin {
@@ -69123,78 +69006,6 @@ video {
   }
 
   .md\:font-black {
-    font-weight: 900;
-  }
-
-  .md\:hover\:font-thin:hover {
-    font-weight: 100;
-  }
-
-  .md\:hover\:font-extralight:hover {
-    font-weight: 200;
-  }
-
-  .md\:hover\:font-light:hover {
-    font-weight: 300;
-  }
-
-  .md\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .md\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .md\:hover\:font-semibold:hover {
-    font-weight: 600;
-  }
-
-  .md\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .md\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .md\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .md\:focus\:font-thin:focus {
-    font-weight: 100;
-  }
-
-  .md\:focus\:font-extralight:focus {
-    font-weight: 200;
-  }
-
-  .md\:focus\:font-light:focus {
-    font-weight: 300;
-  }
-
-  .md\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .md\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .md\:focus\:font-semibold:focus {
-    font-weight: 600;
-  }
-
-  .md\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .md\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .md\:focus\:font-black:focus {
     font-weight: 900;
   }
 
@@ -97895,15 +97706,15 @@ video {
   }
 
   .lg\:font-sans {
-    font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Josefin Sans, Roboto;
   }
 
   .lg\:font-serif {
-    font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .lg\:font-mono {
-    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .lg\:font-thin {
@@ -97939,78 +97750,6 @@ video {
   }
 
   .lg\:font-black {
-    font-weight: 900;
-  }
-
-  .lg\:hover\:font-thin:hover {
-    font-weight: 100;
-  }
-
-  .lg\:hover\:font-extralight:hover {
-    font-weight: 200;
-  }
-
-  .lg\:hover\:font-light:hover {
-    font-weight: 300;
-  }
-
-  .lg\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .lg\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .lg\:hover\:font-semibold:hover {
-    font-weight: 600;
-  }
-
-  .lg\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .lg\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .lg\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .lg\:focus\:font-thin:focus {
-    font-weight: 100;
-  }
-
-  .lg\:focus\:font-extralight:focus {
-    font-weight: 200;
-  }
-
-  .lg\:focus\:font-light:focus {
-    font-weight: 300;
-  }
-
-  .lg\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .lg\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .lg\:focus\:font-semibold:focus {
-    font-weight: 600;
-  }
-
-  .lg\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .lg\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .lg\:focus\:font-black:focus {
     font-weight: 900;
   }
 
@@ -126711,15 +126450,15 @@ video {
   }
 
   .xl\:font-sans {
-    font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Josefin Sans, Roboto;
   }
 
   .xl\:font-serif {
-    font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .xl\:font-mono {
-    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .xl\:font-thin {
@@ -126755,78 +126494,6 @@ video {
   }
 
   .xl\:font-black {
-    font-weight: 900;
-  }
-
-  .xl\:hover\:font-thin:hover {
-    font-weight: 100;
-  }
-
-  .xl\:hover\:font-extralight:hover {
-    font-weight: 200;
-  }
-
-  .xl\:hover\:font-light:hover {
-    font-weight: 300;
-  }
-
-  .xl\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .xl\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .xl\:hover\:font-semibold:hover {
-    font-weight: 600;
-  }
-
-  .xl\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .xl\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .xl\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .xl\:focus\:font-thin:focus {
-    font-weight: 100;
-  }
-
-  .xl\:focus\:font-extralight:focus {
-    font-weight: 200;
-  }
-
-  .xl\:focus\:font-light:focus {
-    font-weight: 300;
-  }
-
-  .xl\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .xl\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .xl\:focus\:font-semibold:focus {
-    font-weight: 600;
-  }
-
-  .xl\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .xl\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .xl\:focus\:font-black:focus {
     font-weight: 900;
   }
 
@@ -155527,15 +155194,15 @@ video {
   }
 
   .\32xl\:font-sans {
-    font-family: Josefin Sans, Roboto, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Josefin Sans, Roboto;
   }
 
   .\32xl\:font-serif {
-    font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .\32xl\:font-mono {
-    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   .\32xl\:font-thin {
@@ -155571,78 +155238,6 @@ video {
   }
 
   .\32xl\:font-black {
-    font-weight: 900;
-  }
-
-  .\32xl\:hover\:font-thin:hover {
-    font-weight: 100;
-  }
-
-  .\32xl\:hover\:font-extralight:hover {
-    font-weight: 200;
-  }
-
-  .\32xl\:hover\:font-light:hover {
-    font-weight: 300;
-  }
-
-  .\32xl\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .\32xl\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .\32xl\:hover\:font-semibold:hover {
-    font-weight: 600;
-  }
-
-  .\32xl\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .\32xl\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .\32xl\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .\32xl\:focus\:font-thin:focus {
-    font-weight: 100;
-  }
-
-  .\32xl\:focus\:font-extralight:focus {
-    font-weight: 200;
-  }
-
-  .\32xl\:focus\:font-light:focus {
-    font-weight: 300;
-  }
-
-  .\32xl\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .\32xl\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .\32xl\:focus\:font-semibold:focus {
-    font-weight: 600;
-  }
-
-  .\32xl\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .\32xl\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .\32xl\:focus\:font-black:focus {
     font-weight: 900;
   }
 
